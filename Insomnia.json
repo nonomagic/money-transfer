@@ -1,0 +1,266 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-04-29T23:29:04.149Z",
+	"__export_source": "insomnia.desktop.app:v5.16.1",
+	"resources": [
+		{
+			"_id": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"created": 1525033668381,
+			"description": "",
+			"modified": 1525033668381,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_fb384cd68c574c2fae2cdcfb691db600",
+			"color": null,
+			"created": 1525033668412,
+			"data": {
+				"base_url": "http://localhost:8080"
+			},
+			"isPrivate": false,
+			"modified": 1525033761400,
+			"name": "New Environment",
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_c89ba327892a4746836a436adb2b4e65",
+			"cookies": [],
+			"created": 1525033668489,
+			"modified": 1525033668489,
+			"name": "Default Jar",
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_cf59d2a244f94e14975f5c963c172775",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"test_name\",\n\t\"email\": \"test_email@email.com\"\n}"
+			},
+			"created": 1525033701039,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_eef6042f830d4402a975677b48db16a4",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1525033701039,
+			"method": "POST",
+			"modified": 1525043643679,
+			"name": "Create Account Owner",
+			"parameters": [
+				{
+					"id": "pair_44b0b8785e0943d9910b10fb3e0823e9",
+					"name": "name",
+					"value": "test"
+				},
+				{
+					"id": "pair_b973c301d5634c39a13093842625702c",
+					"name": "email",
+					"value": ""
+				}
+			],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/owners",
+			"_type": "request"
+		},
+		{
+			"_id": "req_841cb9ccd7f14971aa7f854167647d39",
+			"authentication": {},
+			"body": {},
+			"created": 1525033927965,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1525033927965,
+			"method": "GET",
+			"modified": 1525033935462,
+			"name": "List Account Owners",
+			"parameters": [],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/owners",
+			"_type": "request"
+		},
+		{
+			"_id": "req_749feb44a91d4412a71ddcd6172f5377",
+			"authentication": {},
+			"body": {},
+			"created": 1525035421023,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1525035421023,
+			"method": "DELETE",
+			"modified": 1525044410486,
+			"name": "Delete Account Owner",
+			"parameters": [],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/owners/cb2b9a41-66e5-4769-9f08-d6f995f9bcad",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c0aaad1937c14c51bdf868358fce7e0b",
+			"authentication": {},
+			"body": {},
+			"created": 1525035500793,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1525035500793,
+			"method": "GET",
+			"modified": 1525044366632,
+			"name": "List Owner's Accounts",
+			"parameters": [],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/owners/cb2b9a41-66e5-4769-9f08-d6f995f9bcad/accounts",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3acf776400d94fb593b41d3daca7bec1",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"ownerId\": \"cb2b9a41-66e5-4769-9f08-d6f995f9bcad\",\n\t\"balance\": 100\n}"
+			},
+			"created": 1525042626711,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7580038fe5b44667b229e460d706467f",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1525042626711,
+			"method": "POST",
+			"modified": 1525044344622,
+			"name": "Create an Account",
+			"parameters": [],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/accounts",
+			"_type": "request"
+		},
+		{
+			"_id": "req_75f4a8eb6eeb428695af7917d6ab80d5",
+			"authentication": {},
+			"body": {},
+			"created": 1525042767487,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1525042767487,
+			"method": "GET",
+			"modified": 1525042775459,
+			"name": "List Accounts",
+			"parameters": [],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/accounts",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c27fc684680d4239964e8fc88e6e55a0",
+			"authentication": {},
+			"body": {},
+			"created": 1525042788951,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1525042788951,
+			"method": "DELETE",
+			"modified": 1525044390457,
+			"name": "Delete an Account",
+			"parameters": [],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/accounts/47866e77-f27a-436f-81bc-d7afe30b34a2",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e1fb0e12003a43dcb63049c5bf9ba0c6",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"amount\": 10.4\n}"
+			},
+			"created": 1525043773946,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_b2edc0ebbd5c4139b786de047c00b09f",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1525043773946,
+			"method": "PUT",
+			"modified": 1525044112333,
+			"name": "Transfer money between accounts",
+			"parameters": [],
+			"parentId": "wrk_b8d7ce95198443f7b4f5c8892f87e2e4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/accounts/5da73b96-2f01-455b-9a1e-53b50ea0cf85/transfer/b3a49d38-e8bf-42be-b996-f899e9a64bdb",
+			"_type": "request"
+		},
+		{
+			"_id": "env_933340fed49549f787af9c20635294e3",
+			"color": null,
+			"created": 1525033773731,
+			"data": {
+				"base_url": "http://localhost:8080"
+			},
+			"isPrivate": false,
+			"modified": 1525033793578,
+			"name": "Base",
+			"parentId": "env_fb384cd68c574c2fae2cdcfb691db600",
+			"_type": "environment"
+		}
+	]
+}
