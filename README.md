@@ -28,7 +28,7 @@ container/server)
 
 ## API
 
-If you fancy using [Insomnia](https://support.insomnia.rest/), feel free to plug in `Insomnia.json` configuration I left in the repo, it should make it easier to play around with the API.
+If you fancy using [Insomnia](https://insomnia.rest/), feel free to plug in `Insomnia.json` configuration I left in the repo, it should make it easier to play around with the API.
 
 ## /ping
 
