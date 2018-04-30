@@ -22,9 +22,9 @@ container/server)
 
 ## Implementation
 
-* Long story short, there're two main resources available through API: account owners and accounts. Account owners may own zero or more accounts.
-* All non-atomic data manipulation operations are hidden behind the DAO layer, so no explicit assumption is made about concurrency level of the server or atomicity of the data layer.
-* I gave up on writing high-level REST API tests: it's too painful and time-consuming if your only option is Java (otherwise I'd use python or js).
+* Long story short, there're two main resources available through the API: account owners and accounts. Account owners may own zero or more accounts.
+* All non-atomic data manipulation operations are hidden behind the DAO layer, so no explicit assumptions are made about concurrency level of the server or atomicity of the data layer.
+* I gave up on writing high-level REST API tests: it's way too painful and time-consuming if your only option is Java (otherwise I'd use python or js).
 
 ## API
 
