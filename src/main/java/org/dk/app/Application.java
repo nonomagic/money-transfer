@@ -10,6 +10,7 @@ import static spark.Spark.notFound;
 import static spark.Spark.port;
 import static spark.Spark.post;
 import static spark.Spark.put;
+import static spark.Spark.threadPool;
 
 import org.dk.app.api.AccountAPI;
 import org.dk.app.api.AccountOwnerAPI;
@@ -19,6 +20,9 @@ import org.dk.app.model.dao.exceptions.DatabaseError;
 public class Application {
     public static void main(String[] args) {
         port(Config.applicationPort);
+
+        int numCores = Runtime.getRuntime().availableProcessors();
+        threadPool(numCores * 2);
 
         after((request, response) -> {
             response.type("application/json");
