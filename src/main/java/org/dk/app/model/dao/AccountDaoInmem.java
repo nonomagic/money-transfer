@@ -22,24 +22,32 @@ public class AccountDaoInmem implements AccountDao {
     public Account create(AccountOwner owner, double balance) {
         String accountId = UUID.randomUUID().toString();
         Account account = new Account(accountId, balance, owner.getId());
-        idMap.put(accountId, account);
 
-        List<Account> ownerAccounts = ownerMap.computeIfAbsent(
-            owner.getId(), id -> new LinkedList<>()
-        );
-        ownerAccounts.add(account);
+        synchronized (this) {
+            idMap.put(accountId, account);
+
+            List<Account> ownerAccounts = ownerMap.computeIfAbsent(
+                owner.getId(), id -> new LinkedList<>()
+            );
+            ownerAccounts.add(account);
+        }
 
         return account;
     }
 
     @Override
     public Collection<Account> list() {
-        return idMap.values();
+        synchronized (this) {
+            return idMap.values();
+        }
     }
 
     @Override
     public Collection<Account> listByOwner(String ownerId) {
-        Collection<Account> accounts = ownerMap.get(ownerId);
+        Collection<Account> accounts;
+        synchronized (this) {
+            accounts = ownerMap.get(ownerId);
+        }
         if (accounts == null) {
             return Collections.EMPTY_LIST;
         }
@@ -54,15 +62,18 @@ public class AccountDaoInmem implements AccountDao {
 
     @Override
     public Account delete(String id) {
-        Account deleted = idMap.remove(id);
-        if (deleted != null) {
-            LinkedList<Account> ownerAccounts = ownerMap.get(deleted.getOwnerId());
-            if (ownerAccounts != null) {
-                // An assumption is made that an owner will rarely
-                // have hundreds or thousands of accounts, so storing
-                // them in a list should be fine even though remove
-                // operation is O(n).
-                ownerAccounts.remove(deleted);
+        Account deleted;
+        synchronized (this) {
+            deleted = idMap.remove(id);
+            if (deleted != null) {
+                LinkedList<Account> ownerAccounts = ownerMap.get(deleted.getOwnerId());
+                if (ownerAccounts != null) {
+                    // An assumption is made that an owner will rarely
+                    // have hundreds or thousands of accounts, so storing
+                    // them in a list should be fine even though remove
+                    // operation is O(n).
+                    ownerAccounts.remove(deleted);
+                }
             }
         }
 
@@ -71,22 +82,26 @@ public class AccountDaoInmem implements AccountDao {
 
     @Override
     public void transfer(Account from, Account to, double amount) {
-        if (from.getBalance() - amount < 0) {
-            throw new DatabaseAccountTransferError(
-                String.format(
-                    "Not enough money on balance of \"%s\" to complete the transfer",
-                    from.getId()
-                )
-            );
-        }
+        synchronized (this) {
+            if (from.getBalance() - amount < 0) {
+                throw new DatabaseAccountTransferError(
+                    String.format(
+                        "Not enough money on balance of \"%s\" to complete the transfer",
+                        from.getId()
+                    )
+                );
+            }
 
-        to.setBalance(to.getBalance() + amount);
-        from.setBalance(from.getBalance() - amount);
+            to.setBalance(to.getBalance() + amount);
+            from.setBalance(from.getBalance() - amount);
+        }
     }
 
     @Override
     public void deleteAll() {
-        idMap.clear();
-        ownerMap.clear();
+        synchronized (this) {
+            idMap.clear();
+            ownerMap.clear();
+        }
     }
 }
