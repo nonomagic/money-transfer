@@ -34,7 +34,7 @@ public class AccountController {
         return Model.accountDao.create(owner, balance);
     }
 
-    public static void transfer(String fromId, String toId, double amount) {
+    public static synchronized void transfer(String fromId, String toId, double amount) {
         Account from = getAccount(fromId);
         Account to = getAccount(toId);
         if (amount < 0) {

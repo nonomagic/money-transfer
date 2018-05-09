@@ -48,8 +48,8 @@ public class ConcurrentTransfersTest {
         executor.awaitTermination(30, SECONDS);
 
         // then
-        assertThat("Bob's balance", balanceOf(bob), is(2000));
-        assertThat("Alice's balance", balanceOf(alice), is(2000));
+        assertThat("Bob's balance", balanceOf(bob), is(2000.0));
+        assertThat("Alice's balance", balanceOf(alice), is(2000.0));
     }
 
     @Before
